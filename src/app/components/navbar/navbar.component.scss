@@ -1,0 +1,63 @@
+li {
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: #FFE8BA; /* Light Gray Background */
+}
+
+.nav-logo
+{
+    max-width: 2%; /* Limita el ancho de la imagen */
+    height: auto;  /* Permite que el alto se ajuste automáticamente */
+}
+
+a {
+  color: #F68420;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.top-bar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  // Style for menu items
+  .menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  // Style for menu items
+  .menu li {
+    margin-right: 20px;
+  }
+  
+  // Style for buttons
+  .menu button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  // Hover effect for buttons
+  .menu button:hover {
+    text-decoration: underline;
+  }
+  
+  // Style for the login dropdown
+  .menu li:last-child ul {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }

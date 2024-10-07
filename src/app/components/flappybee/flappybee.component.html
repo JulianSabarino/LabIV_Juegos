@@ -1,0 +1,15 @@
+<div class="game-div wrapper d-flex-center">
+    <div class="background"></div>
+    
+    <button (click)="startFlying() " *ngIf="!gameStarted">A Volar!</button>
+
+    <div class="d-flex-center">
+        <section *ngIf="gameStarted">
+            <p>Inicioado</p>
+        </section>
+    </div>
+
+</div>
+
+
+

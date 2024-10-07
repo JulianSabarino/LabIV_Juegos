@@ -1,0 +1,43 @@
+.game-div {
+    width: 400px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Optional: Add a background color */
+    border: 1px solid #ccc; /* Optional: Add a border */
+  }
+
+  button
+  {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    font-family: monospace;
+    font-size: 1em;
+  }
+
+  button:active
+  {
+    transform: scale(0.9);
+  }
+
+.wrapper
+{
+    height: 400px;
+    background: linear-gradient(to bottom, #0c89ff,#92edff);
+}
+
+.d-flex-center
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background
+{
+    position:relative;
+    overflow: hidden;
+}

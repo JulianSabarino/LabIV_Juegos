@@ -1,0 +1,22 @@
+<div class="card text-center chat-container" *ngIf="authService.user">
+    <div class="card-header">
+      Chatsito
+    </div>
+    
+    <div class="card-body">
+        <div>
+            <p *ngFor="let messages of messageList" [ngClass]="(authService.user.uid==messages.emisor)? 'sent' : 'received'">
+                {{messages.message}}
+            </p>
+        </div>
+    </div>
+
+    <form class="card-footer text-muted input-group" (ngSubmit)="sendMessage()">
+            <input type="text" class="form-control" placeholder="Mensaje" [(ngModel)]="nuevoMensaje" [ngModelOptions]="{standalone: true}">
+            <div class=" input-group-append" (click)="sendMessage()">
+                <span class="input-group-text" id="basic-addon2">
+                    <img class="chat-img" src="assets/logo.png" alt="">
+                </span>
+            </div>
+    </form>
+  </div>

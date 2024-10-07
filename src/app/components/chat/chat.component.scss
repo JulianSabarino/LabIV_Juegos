@@ -1,0 +1,45 @@
+.chat-container
+{
+    width: 300px;
+    height: 500px;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0;
+}
+
+.card-header
+{
+    background-color: #FFE8BA;
+    color: #F78420;
+    font-weight: 500;
+}
+
+.card-body{
+    padding: 0.5rem;
+}
+
+.chat-img
+{
+    max-width: 30px;
+    cursor: pointer;
+}
+.chat-img:active
+{
+    transform: scale(0.9);
+}
+
+.sent
+{
+    display: block;
+    float: right;
+    max-width: 50%;
+    text-align: left;
+}
+
+.received
+{
+    display: block;
+    float: left;
+    max-width: 50%;
+    text-align: left;
+}

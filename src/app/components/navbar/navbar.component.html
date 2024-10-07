@@ -1,0 +1,32 @@
+  <nav class="navbar navbar-expand-md navbar-dark" aria-label="Fourth navbar example">
+    <div class="container-fluid">
+      <img [src]="logo" class="nav-logo">
+
+      <div class="collapse navbar-collapse justify-content-start" id="navbarsExample04">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link" (click)="RootPath('home')">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="RootPath('home/who-we-are')">Who we are</a>
+            </li>
+
+        </ul>
+
+      </div>
+
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item dropdown d-flex">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ this.authService.user ? this.authService.user.email.split('@')[0] : 'Unsigned' }}
+          </a>
+          <ul class="dropdown-menu justify-content-end"> 
+            <ng-container *ngIf="this.authService.user==null"><li ><a class="dropdown-item" (click)="RootPath('auth')">Log In</a></li></ng-container>
+            <ng-container *ngIf="this.authService.user"><li ><a class="dropdown-item" (click)="authService.logout()">Log Out</a></li></ng-container>
+            <li><a *ngIf="this.authService.user== null" class="dropdown-item" (click)="RootPath('auth/register')">Register</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
