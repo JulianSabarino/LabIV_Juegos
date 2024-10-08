@@ -32,6 +32,9 @@ body {
     border: 2px solid #000;
     font-size: 2em;
     cursor: pointer;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .cell:hover {
@@ -47,4 +50,9 @@ button {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
+}
+
+.game-div
+{
+    background-color: #E9ECEF;
 }

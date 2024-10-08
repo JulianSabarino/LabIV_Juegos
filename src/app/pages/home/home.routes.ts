@@ -13,6 +13,17 @@ export const routes: Routes = [
     path: 'games',
     loadComponent: ()=> import('../home/games/games.component').then(m=>m.GamesComponent)
 },
-
-
+{
+    path: 'tic-tac-toe',
+    loadComponent: ()=> import('../../components/tic-tac-toe/tic-tac-toe.component').then(m=>m.TicTacToeComponent)
+},
+{
+    path: 'hangedman',
+    loadComponent: ()=> import('../../components/hangedman/hangedman.component').then(m=>m.HangedmanComponent )
+},
+{
+    path: 'askedmtg',
+    loadComponent: ()=> import('../../components/askmagic/askmagic.component').then(m=>m.AskmagicComponent )
+}
+    
 ];

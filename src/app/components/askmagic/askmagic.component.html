@@ -1,0 +1,31 @@
+<div class="container d-flex justify-content-center align-items-center full-height">
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2 game-div">
+          <h2 class="featurette-heading fw-normal lh-1">Preguntados <span class="text-body-secondary">Un exito inesperado</span></h2>
+          <p class="lead">Fue lanzado en 2013 y llegó a encabezar la lista de los más descargados en 125 países. El juego,
+            que logró 600 millones de descargas, fue número uno en el ranking de aplicaciones de Estados Unidos durante 66
+            días.Fue lanzado en 2013 y llegó a encabezar la lista de los más descargados en 125 países. El juego, que logró
+            600 millones de descargas, fue número uno en el ranking de aplicaciones de Estados Unidos durante 66 días.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+          
+
+            <div class="d-flex justify-content-center align-items-center">
+                <img [src]="cardSelected.img" class="card-img">
+
+                <div class="flex-column">
+                    <button class="d-flex btn-start" *ngIf="!gameStarted" (click)="startGame()">Generar una carta</button>
+
+                    <p *ngIf="gameStarted">Cual es el nombre de esta carta?</p>
+                    <button #optbutton class="d-flex btn-option" *ngIf="(this.cardOptions.length >= 4) && gameStarted" (click)="sendResults(cardOptions[0].name)">{{ cardOptions[0].name }}</button>
+                    <button #optbutton class="d-flex btn-option" *ngIf="(this.cardOptions.length >= 4) && gameStarted" (click)="sendResults(cardOptions[1].name)">{{ cardOptions[1].name }}</button>
+                    <button #optbutton class="d-flex btn-option" *ngIf="(this.cardOptions.length >= 4) && gameStarted" (click)="sendResults(cardOptions[2].name)">{{ cardOptions[2].name }}</button>
+                    <button #optbutton class="d-flex btn-option" *ngIf="(this.cardOptions.length >= 4) && gameStarted" (click)="sendResults(cardOptions[3].name)">{{ cardOptions[3].name }}</button>
+                </div>
+
+            </div>
+            
+
+        </div>
+      </div>
+</div>

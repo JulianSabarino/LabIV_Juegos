@@ -9,7 +9,8 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
   styleUrl: './hangedman.component.scss'
 })
 export class HangedmanComponent implements AfterViewInit  {
-  word: string;
+  wordList: any = ["COLMENTAS", "ABEJA", "PANAL", "JUEGOS"];
+  word: string
   guesses: number = 6;
   guessedLetters: string[] = [];
   buttons: NodeListOf<HTMLButtonElement>;
@@ -20,7 +21,8 @@ export class HangedmanComponent implements AfterViewInit  {
 
   constructor()
   {
-    this.word = "COLMENAS";
+    let number = this.getRandomWord(0,3)
+    this.word = this.wordList[number];
     //this.guessedLetters = "";
     this.buttons = document.querySelectorAll('.key') as NodeListOf<HTMLButtonElement>;
     this.guessers = document.querySelectorAll('.wordGuesser') as NodeListOf<HTMLDivElement>; 
@@ -70,7 +72,7 @@ export class HangedmanComponent implements AfterViewInit  {
       if (this.guessedLetters.includes(this.word[i].toUpperCase())) { 
         letterSpan.textContent = this.word[i];
       } else {
-        letterSpan.textContent = '_';
+        letterSpan.textContent = '_ ';
       }
       this.guessers[0].appendChild(letterSpan);
     }
@@ -94,6 +96,14 @@ export class HangedmanComponent implements AfterViewInit  {
   disableButtons()
   {
     this.buttons.forEach(button  => button.disabled = true)
+  }
+
+
+
+
+
+  getRandomWord(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
 }
