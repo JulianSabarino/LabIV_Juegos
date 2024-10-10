@@ -1,63 +1,50 @@
-li {
+.navbar {
+  background-color: #343a40; /* Dark background */
+  //padding: 1rem; /* Spacing around the navbar */
+}
+
+.nav-logo {
+  height: 40px; /* Set a height for the logo */
+  margin-right: 1rem; /* Space between logo and nav items */
   cursor: pointer;
 }
 
-.navbar {
-  background-color: #FFE8BA; /* Light Gray Background */
+.nav-link {
+  color: #ffffff; /* Link color */
+  margin: 0 1rem; /* Space between nav links */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+  cursor: pointer;
 }
 
-.nav-logo
+.nav-item:hover
 {
-    max-width: 2%; /* Limita el ancho de la imagen */
-    height: auto;  /* Permite que el alto se ajuste automáticamente */
+  background-color: #495057; /* Lighten on hover */
 }
 
-a {
-  color: #F68420;
-  font-family: 'Orbitron', sans-serif;
+.nav-link:hover {
+  color: #f8f9fa; /* Lighten on hover */
 }
 
-.top-bar {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.nav-item.dropdown .dropdown-menu {
+  background-color: #343a40; /* Dropdown background */
+}
+
+.dropdown-item {
+  color: #ffffff; /* Dropdown item color */
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #495057; /* Highlight dropdown item on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar {
+      padding: 0.5rem; /* Reduce padding on smaller screens */
   }
-  
-  // Style for menu items
-  .menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+
+  .nav-link {
+      margin: 0 0.5rem; /* Reduce space between links */
   }
-  
-  // Style for menu items
-  .menu li {
-    margin-right: 20px;
-  }
-  
-  // Style for buttons
-  .menu button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  // Hover effect for buttons
-  .menu button:hover {
-    text-decoration: underline;
-  }
-  
-  // Style for the login dropdown
-  .menu li:last-child ul {
-    display: none;
-    position: absolute;
-    background-color: #333;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+}

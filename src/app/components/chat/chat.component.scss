@@ -1,3 +1,4 @@
+
 .chat-container
 {
     width: 300px;
@@ -12,6 +13,7 @@
     background-color: #FFE8BA;
     color: #F78420;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .card-body{
@@ -43,3 +45,19 @@
     max-width: 50%;
     text-align: left;
 }
+
+
+.transparente{
+    background: transparent;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+   
+}
+
+.otraclase::-webkit-scrollbar{
+    display: none;
+}
+
+.otraclase{
+    overflow: auto;
+}
+

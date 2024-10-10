@@ -32,6 +32,10 @@ export const routes: Routes = [
 {
     path: 'minmax',
     loadComponent: ()=> import('../../components/minmax/minmax.component').then(m=>m.MinmaxComponent )
+},
+{
+    path: 'chat',
+    loadComponent: ()=> import('../../components/chat/chat.component').then(m=>m.ChatComponent )
 }
     
 ];

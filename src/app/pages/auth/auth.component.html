@@ -2,13 +2,13 @@
     <div class="container d-flex justify-content-center align-items-center full-height">
       <form [formGroup]="this.form" (submit)="login()" class="form-signin f-signin">
         <img class="mb-4" [src]="logo" alt="" width="100" height="100">
-        <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Inicio</h1>
         
           <input [formControl]="form.controls.email"  type="email" id="inputEmail" class="form-control" placeholder="Email" fdprocessedid="j0mt9h">
           <input [formControl]="form.controls.password" type="password" id="inputPassword" class="form-control" placeholder="Password" fdprocessedid="cptj27">
         
-        <button class="btn btn-lg btn-primary btn-block btn-log" type="submit" fdprocessedid="196ry">Sign in</button>
-        <a (click)="RootPath('auth/recover')" class="btn-recover">Recover Password</a>
+        <button class="btn btn-lg btn-primary btn-block btn-log" type="submit" fdprocessedid="196ry">Iniciar Sesión</button>
+        <a (click)="RootPath('auth/recover')" class="btn-recover">Recuperar Contraseña</a>
         
         <button class="btn btn-lg btn-primary btn-block btn-log" (click)="FillForm()">Llenar Usuario/Contraseña</button>
         <p class="mt-5 mb-3 text-muted">© 2024 - 2025</p>

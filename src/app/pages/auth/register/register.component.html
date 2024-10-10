@@ -3,7 +3,7 @@
 
     <form [formGroup]="form" class="form-signin f-signin" (ngSubmit)="submit()">
       <img class="mb-4" [src]="logo" alt="" width="100" height="100">
-      <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
       
         <input type="email" id="inputEmail" class="form-control" placeholder="User" required="" autofocus="" fdprocessedid="j0mt9h" formControlName="email">
         <div *ngIf="form.controls.email.errors?.['email'] && form.controls.email.touched">Ingrese un correo valido</div>
@@ -11,7 +11,7 @@
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" fdprocessedid="cptj27" formControlName="pass">
         <div *ngIf="form.controls.pass.errors?.['required'] && form.controls.pass.touched">La contraseña es requerida</div>
         
-      <button class="btn btn-lg btn-primary btn-block btn-log" type="submit" fdprocessedid="196ry" [disabled]="form.invalid">Register</button>
+      <button class="btn btn-lg btn-primary btn-block btn-log" type="submit" fdprocessedid="196ry" [disabled]="form.invalid">Registrarse</button>
       
       <p class="mt-5 mb-3 text-muted">© 2024 - 2025</p>
     </form>

@@ -9,5 +9,5 @@ import { Component } from '@angular/core';
 })
 export class WhoWeAreComponent {
   js_photo = "/assets/js_photo.jpg"; 
-  placeholder = "/assets/placeholder.jpg"; 
+  placeholder = "/assets/logo.png"; 
 }

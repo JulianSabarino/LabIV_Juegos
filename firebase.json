@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/colmenasdragones/browser",
+    "public": "dist/colmenitas/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
