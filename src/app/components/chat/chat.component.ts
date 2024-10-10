@@ -5,11 +5,12 @@ import { AuthService } from '../../core/services/auth.service';
 import { ChatService } from './chat.service';
 import { Timestamp } from '@angular/fire/firestore';
 import { MensajeChat } from './chat.model';
+import { MessagedatePipe } from '../../core/pipes/messagedate.pipe';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,MessagedatePipe],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss'
 })

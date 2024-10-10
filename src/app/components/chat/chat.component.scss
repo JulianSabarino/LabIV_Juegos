@@ -61,3 +61,16 @@
     overflow: auto;
 }
 
+.wrapper {
+    position: relative;
+    height: 75%;
+    background: transparent;
+    
+
+    display: flex;
+}
+
+.show-chat
+{
+    display: none;
+}
