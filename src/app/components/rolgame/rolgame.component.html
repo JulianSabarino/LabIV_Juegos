@@ -1,0 +1,54 @@
+<div class="container d-flex justify-content-center align-items-center full-height">
+
+    <div class="row featurette container">
+        <div class="col-md-7 game-div">
+            <h2 class="featurette-heading fw-normal lh-1">Tic Tac Toe: <span class="text-body-secondary">Uno de los primeros juegos que aprendemos a jugar.</span></h2>
+            <p class="lead">Se cree que los chinos lo jugaban en la época de Confucio (500ac) y hay tableros tallados en los asientos de algunas Catedrales de Inglaterra donde éste juego se hizo popular en el siglo XIV. En la antigua Roma podemos encontrar un antecesor a este juego "el terni lapilli".</p>
+        </div>
+        <div class="col-md-5 game-div">
+    
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="battle-container">
+                  <div class="boar-container" *ngIf="!gameStatus.isWin">
+                    <img class="boar-img" src="assets/rpg/boar-fullhp.png"   *ngIf="boarStatus.health==3 && boarStatus.position == 'near'" [ngClass]="{'slideDown': boarStatus.isAttacking}">
+                    <img class="boar-img" src="assets/rpg/boar-2_3.png"      *ngIf="boarStatus.health==2 && boarStatus.position == 'near'" [ngClass]="{'slideDown': boarStatus.isAttacking}">
+                    <img class="boar-img" src="assets/rpg/boar-1_3.png"      *ngIf="boarStatus.health<=1 && boarStatus.position == 'near'" [ngClass]="{'openDownLeft': boarStatus.health==0}" [ngClass]="{'slideDown': boarStatus.isAttacking}">
+                    <img class="boar-img" src="assets/rpg/boar-running.png"  *ngIf="boarStatus.position == 'away'" [ngClass]="{'openDownLeft': boarStatus.health==0}" [ngClass]="{'slideDown': boarStatus.isAttacking}">
+                    <div>
+                      <h3 class="boar-action">{{boarStatus.action}}</h3>
+                    
+                        <div class="d-flex">
+                            <div class="health-bar">
+                              <div class="health-bar-fill" *ngIf="boarStatus.health>=1"></div>
+                            </div>
+                            <div class="health-bar">
+                              <div class="health-bar-fill" *ngIf="boarStatus.health>=2"></div>
+                            </div>
+                            <div class="health-bar">
+                              <div class="health-bar-fill" *ngIf="boarStatus.health==3"></div>
+                            </div>
+                        </div>
+            
+                        <!--<div class="health-bar-fill" [style.width.%]="100*boarStatus.health/3"></div>-->
+                    </div>
+                  </div>
+                
+                  <div class="boar-container">
+                    <img class="boar-img" src="assets/rpg/hunter.png" [ngClass]="{'slideUp': gameStatus.isAttacking}" [ngClass]="{'openDownRight': gameStatus.isDead}">
+                  </div>
+                
+                  <div class="battle-actions d-flex">
+                    <button class="action-button" (click)="advanceGame('attack')">Atacar</button>
+                    <button class="action-button" (click)="advanceGame('dodge')">Esquivar</button>
+                    <button class="action-button" (click)="advanceGame('close')">Acercarse</button>
+                  </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+
+

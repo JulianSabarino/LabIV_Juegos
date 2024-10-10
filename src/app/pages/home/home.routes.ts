@@ -24,6 +24,14 @@ export const routes: Routes = [
 {
     path: 'askedmtg',
     loadComponent: ()=> import('../../components/askmagic/askmagic.component').then(m=>m.AskmagicComponent )
+},
+{
+    path: 'rpg',
+    loadComponent: ()=> import('../../components/rolgame/rolgame.component').then(m=>m.RolgameComponent )
+},
+{
+    path: 'minmax',
+    loadComponent: ()=> import('../../components/minmax/minmax.component').then(m=>m.MinmaxComponent )
 }
     
 ];

@@ -1,0 +1,208 @@
+ .container
+ {
+    background-color: #E9ECEF;
+ }
+
+  .battle-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .boar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .boar-img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .boar-action {
+    font-size: 1em;
+    text-align: left;
+    margin-left: 0px;
+    width: 100%;
+  }
+  
+  .health-bar {
+    width: 50px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-right: 2px;
+  }
+  
+  .health-bar-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 5px;
+  }
+  
+  .battle-actions {
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .action-button {
+    //width: 20%;
+    margin: 1%;
+    padding: 2px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .action-button:active {
+    transform: scale(0.9);
+  }
+
+
+
+
+
+
+
+
+
+
+  .slideUp {
+    -webkit-animation-name: slideUp;
+    animation-name: slideUp;
+    animation: slideUp 0.3s ease forwards;
+    animation-delay: 0s;
+  }
+  
+  @-webkit-keyframes slideUp {
+    0% {
+      transform-origin: 0 0;
+      transform: translateY(0%);
+    }
+    100% {
+      transform-origin: 0 0;
+      transform: translateY(-30%);
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      transform-origin: 0 0;
+      transform: translateY(0%);
+    }
+    100% {
+      transform-origin: 0 0;
+      transform: translateY(-30%);
+    }
+  }
+
+
+  .slideDown {
+    -webkit-animation-name: slideDown;
+    animation-name: slideDown;
+    animation: slideDown 0.3s ease forwards;
+    animation-delay: 0s;
+  }
+  
+  @-webkit-keyframes slideDown {
+    0% {
+      transform-origin: 0 0;
+      transform: translateY(0%);
+    }
+    100% {
+      transform-origin: 0 0;
+      //transform: translateY(70%);
+      transform: translate(50%, 70%);
+    }
+  }
+  @keyframes slideDown {
+    0% {
+      transform-origin: 0 0;
+      transform: translateY(0%);
+    }
+    100% {
+      transform-origin: 0 0;
+      //transform: translateY(70%);
+      transform: translate(50%, 70%);
+    }
+  }
+
+  .openDownLeft {
+    -webkit-animation-name: openDownLeft;
+    animation-name: openDownLeft;
+    animation: openDownLeft 2s ease forwards;
+    animation-delay: 0s;
+  }
+  
+  @-webkit-keyframes openDownLeft {
+    0% {
+      transform-origin: bottom left;
+      transform: rotate(0deg);
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform-origin: bottom left;
+      transform: rotate(-110deg);
+      -webkit-animation-timing-function: ease-in-out;
+      animation-timing-function: ease-in-out;
+    }
+  }
+  @keyframes openDownLeft {
+    0% {
+      transform-origin: bottom left;
+      transform: rotate(0deg);
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform-origin: bottom left;
+      transform: rotate(-110deg);
+      -webkit-animation-timing-function: ease-in-out;
+      animation-timing-function: ease-in-out;
+    }
+  }
+
+
+
+  .openDownRight {
+    -webkit-animation-name: openDownRight;
+    animation-name: openDownRight;
+    animation: openDownRight 2s ease forwards;
+    animation-delay: 0s;
+  }
+  
+  @-webkit-keyframes openDownRight {
+    0% {
+      transform-origin: bottom right;
+      transform: rotate(0deg);
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform-origin: bottom right;
+      transform: rotate(110deg);
+      -webkit-animation-timing-function: ease-in-out;
+      animation-timing-function: ease-in-out;
+    }
+  }
+  @keyframes openDownRight {
+    0% {
+      transform-origin: bottom right;
+      transform: rotate(0deg);
+      -webkit-animation-timing-function: ease-out;
+      animation-timing-function: ease-out;
+    }
+    100% {
+      transform-origin: bottom right;
+      transform: rotate(110deg);
+      -webkit-animation-timing-function: ease-in-out;
+      animation-timing-function: ease-in-out;
+    }
+  }
