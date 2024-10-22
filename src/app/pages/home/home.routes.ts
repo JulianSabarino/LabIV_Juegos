@@ -10,10 +10,6 @@ export const routes: Routes = [
     loadComponent: ()=> import('../home/who-we-are/who-we-are.component').then(m=>m.WhoWeAreComponent)
 },
 {
-    path: 'games',
-    loadComponent: ()=> import('../home/games/games.component').then(m=>m.GamesComponent)
-},
-{
     path: 'tic-tac-toe',
     loadComponent: ()=> import('../../components/tic-tac-toe/tic-tac-toe.component').then(m=>m.TicTacToeComponent)
 },

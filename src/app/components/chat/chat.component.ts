@@ -18,12 +18,6 @@ export class ChatComponent implements OnInit{
   chatShow:boolean = true;
 
   nuevoMensaje: string = ""
-  messageList:any = [
-    {
-      emisor: "id",
-      message:  "message"
-    }
-  ]
 
   chatsFirebase:MensajeChat[]=[];
 
@@ -52,9 +46,21 @@ export class ChatComponent implements OnInit{
 
     this.chatService.saveMessage(message);
 
-    console.log(this.messageList);
+    console.log(this.chatService);
 
     this.nuevoMensaje="";
+  }
+
+  scrollBottom()
+  {
+    let elements = document.getElementsByClassName('message');
+    let last:any = elements[elements.length-1];
+    let toppos = last.offsetTop;
+
+    const container = document.getElementById('m-container');
+    if (container) {
+        container.scrollTop = toppos;
+    }
   }
 
   openCloseChat()

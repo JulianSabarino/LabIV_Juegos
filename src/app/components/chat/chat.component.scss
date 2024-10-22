@@ -1,7 +1,7 @@
 
 .chat-container
 {
-    width: 300px;
+    width: 350px;
     height: 500px;
     position: fixed;
     right: 0.5rem;
@@ -16,10 +16,6 @@
     cursor: pointer;
 }
 
-.card-body{
-    padding: 0.5rem;
-}
-
 .chat-img
 {
     max-width: 30px;
@@ -27,50 +23,67 @@
 }
 .chat-img:active
 {
-    transform: scale(0.9);
+    transform: scale(0.8);
 }
+
+.card-body{
+    padding: 0.5rem;
+    max-height: 80%;
+}
+
 
 .sent
 {
     display: block;
     float: right;
-    max-width: 50%;
-    text-align: left;
+    background-color: #F78420;
+    color: #FFE8BA;
+    min-width: 50.1%;
+    border-radius: 10px;
+    margin-right: 0.5rem;
 }
 
 .received
 {
     display: block;
     float: left;
-    max-width: 50%;
+    background-color: #FFE8BA;
+    min-width: 50.1%;
+    border-radius: 10px;
+    margin-left: 0.5rem;
+}
+
+.i-sent
+{
+    display: block;
+    float: right;
+
+    min-width: 50.1%;
+    margin: 0;
+    margin-right: 0.5rem;
+    font-size: 10px;
+    text-align: right;
+}
+
+.i-received
+{
+    display: block;
+    float: left;
+
+    min-width: 50.1%;
+    margin: 0;
+    margin-left: 0.5rem;
+    font-size: 10px;
     text-align: left;
 }
 
-
-.transparente{
-    background: transparent;
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-   
+.message-container
+{
+    overflow-y: scroll;
 }
 
-.otraclase::-webkit-scrollbar{
-    display: none;
-}
-
-.otraclase{
-    overflow: auto;
-}
-
-.wrapper {
-    position: relative;
-    height: 75%;
-    background: transparent;
-    
-
-    display: flex;
-}
-
-.show-chat
+.message-container::-webkit-scrollbar
 {
     display: none;
 }
+
