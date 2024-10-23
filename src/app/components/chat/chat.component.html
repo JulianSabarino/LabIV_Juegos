@@ -1,34 +1,38 @@
-<div class="card text-center chat-container" *ngIf="authService.user">
+<div class="card-header text-center chat-header" (click)="openCloseChat()" *ngIf="authService.user && !chatShow">
+    CHAT
+</div>
+
+
+<div class="card text-center chat-container" *ngIf="authService.user && chatShow">
 
     <div class="card-header" (click)="openCloseChat()">
         CHAT
     </div>
 
 
-    <div class="card-body" *ngIf="chatShow">
-    
+    <div class="card-body">
+
         <div id="m-container" class="message-container h-100">
             <div *ngFor="let chat of chatsFirebase" class="message">
+                <p class="mb-1 i-received" *ngIf="(authService.user.uid!=chat.uid)"><small>{{chat.email}}</small></p>
                 <p class="p-1" [ngClass]="(authService.user.uid==chat.uid)? 'sent' : 'received'">
                     {{chat.message}}
                 </p>
-                <p class="mb-1" [ngClass]="(authService.user.uid==chat.uid)? 'i-sent' : 'i-received'"><small>{{chat.date | messagedate}}</small></p>
+                <p class="mb-1" [ngClass]="(authService.user.uid==chat.uid)? 'i-sent' : 'i-received'"><small>{{chat.date
+                        | messagedate}}</small></p>
             </div>
         </div>
-        
+
 
 
     </div>
-
-
-
 
     <form class="card-footer text-muted input-group" (ngSubmit)="sendMessage()" *ngIf="chatShow">
 
         <input type="text" class="form-control" placeholder="Mensaje" [(ngModel)]="nuevoMensaje"
             [ngModelOptions]="{standalone: true}">
-        
-            <div class=" input-group-append" (click)="sendMessage()">
+
+        <div class=" input-group-append" (click)="sendMessage()">
             <span class="input-group-text" id="basic-addon2">
                 <img class="chat-img" src="assets/logo.png">
             </span>

@@ -1,4 +1,17 @@
+<div class="vh-100 d-flex justify-content-center align-items-center"> 
 <div class="container d-flex justify-content-center align-items-center full-height">
+
+    <div class="alert-container" *ngIf="endOfGame && guesses==0" (click)="RootPath('home')">
+        <div class="alert alert-danger" role="alert">
+          Perdiste!
+        </div>
+      </div>
+    <div class="alert-container" *ngIf="endOfGame && guesses>0" (click)="RootPath('home')">
+        <div class="alert alert-success" role="alert">
+          Victoria!
+        </div>
+      </div>
+
     <div class="row featurette">
         <div class="col-md-7 order-md-2 game-div">
           <h2 class="featurette-heading fw-normal lh-1">El Ahorcado <span class="text-body-secondary">Un ejercicio util para quienes quieran aprender un idioma.</span></h2>
@@ -18,7 +31,8 @@
 
                 <div #wordGuesser>
                     <div id="word" class="wordGuesser"></div>
-                    <div id="guesses-left" class="wordGuesser">Guesses Left: <span id="guesses">6</span></div>
+                    <div id="guesses-left" class="wordGuesser">Intentos Restantes: <span id="guesses">6</span></div>
+                    <div id="guesses-left" class="wordGuesser">Puntuación Maxima: <span id="guesses">{{gameService.userPoints.hangedman}}</span></div>
                 </div>
             </div>
             
@@ -60,4 +74,5 @@
 
         </div>
       </div>
+</div>
 </div>

@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, inject, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { catchError, map, of } from 'rxjs';
+import { GamesService } from '../../core/services/games.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-askmagic',
@@ -20,17 +22,19 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
     img: ""
   };
 
-  cardOptions: any[] = [];
+  cardOptions: any[][] = [];
   gameStarted: boolean = false;
+  puntuacion: number = 0;
+  gameService = inject(GamesService);
+  endOfGame:boolean = false;
+  rooter = inject(Router)
 
   ngOnInit(): void {
 
-    for(let i=0;i <=3; i++)
-    {
-      this.getCard();
-    }
+    this.getFourRandomCards(0);
+    this.getFourRandomCards(1);
+    this.gameService.getPointsByGame("asked");
 
-    console.log(this.cardOptions);
   }
 
   ngAfterViewInit(): void {
@@ -43,9 +47,20 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
     console.log(this.cardOptions);
   }
 
-  getCard() { 
+  async getFourRandomCards(round:number)
+  {
+    this.cardOptions[round] = [];
+    for(let i=0;i <=3; i++)
+      {
+        await this.getCard(round);
+      }
+  
+      console.log(this.cardOptions);
+  }
+
+  getCard(round: number) { 
     // Use getACard() to fetch the data
-    this.getACard().subscribe(
+    this.getACard(round).subscribe(
       (cardData) => {
         console.log("Cargado");
         //console.log('Card data:', cardData); // Do something with cardData
@@ -57,7 +72,7 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
     );
   }
 
-  getACard() {
+  getACard(round: number) {
     const headers = new HttpHeaders({
       'User-Agent': 'Colmenas & Dragones', 
       Accept: '*/*' 
@@ -72,7 +87,7 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
           name: data.name,
           img: data.image_uris.normal
         }
-        this.cardOptions.push(res);
+        this.cardOptions[round].push(res);
         //console.log('Card data:', data.image_uris.normal); // Log the data
         return res
          
@@ -87,18 +102,17 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
     );
   }
 
-  startGame()
+  startGame(round: number)
   {
     this.gameStarted = true;
 
     let cardNum = Math.floor(Math.random() * (4));
-    this.cardSelected = this.cardOptions[cardNum];
+    this.cardSelected = this.cardOptions[round][cardNum];
 
     console.log(this.cardSelected);
-
   }
 
-  sendResults(name:string)
+  async sendResults(name:string)
   {
     this.optbuttons.forEach(optbutton => {
       optbutton.disabled=true;  
@@ -107,13 +121,27 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
     if(this.cardSelected.name == name)
     {
       console.log("Ganaste");
+      this.puntuacion+=1;
+      this.getFourRandomCards(this.puntuacion+1);
+      this.startGame(this.puntuacion);
     }
     else
     {
-      console.log("Perdiste")
+      console.log("Perdiste");
+      this.endOfGame=true;
+      if(this.gameService.userPoints.asked < this.puntuacion)
+      {
+        this.gameService.setGameInfo("asked",this.puntuacion);
+      }
     }
   }
 
+  RootPath(path:string)
+  {
+    this.rooter.navigate([path]);
+    this.puntuacion = 0;
+    this.endOfGame = false;
+  }
 
 }
   

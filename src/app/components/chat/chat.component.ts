@@ -15,7 +15,7 @@ import { MessagedatePipe } from '../../core/pipes/messagedate.pipe';
   styleUrl: './chat.component.scss'
 })
 export class ChatComponent implements OnInit{
-  chatShow:boolean = true;
+  chatShow:boolean = false;
 
   nuevoMensaje: string = ""
 

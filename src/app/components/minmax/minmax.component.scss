@@ -1,7 +1,12 @@
 .container {
     display: flex;
     gap: 20px;
+    background-color: #E9ECEF;
+    padding: 5px;
+    border-radius: 10px;
   }
+
+
   
   .deck-image, .card-image {
     max-width: 150px;
@@ -36,7 +41,20 @@
   }
 
 
-  .game-div
-  {
-    background-color: #FFFFFF;
+
+  .alert-container {
+    position: absolute; /* Make the container position absolute */
+    left: 0; /* Align to the left */
+    width: 100%; /* Full width */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center the alert horizontally */
+    z-index: 1000; /* Ensure it appears above other elements */
+    cursor: pointer;
   }
+  
+  .alert {
+    width: 50%; /* Full width for the alert */
+    text-align: center; /* Center text */
+    font-weight: 500;
+  }
+

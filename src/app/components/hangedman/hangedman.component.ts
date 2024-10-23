@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { GamesService } from '../../core/services/games.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hangedman',
@@ -9,12 +11,17 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
   styleUrl: './hangedman.component.scss'
 })
 export class HangedmanComponent implements AfterViewInit  {
-  wordList: any = ["COLMENTAS", "ABEJA", "PANAL", "JUEGOS"];
+  wordList: any = ["COLMENAS", "ABEJA", "PANAL", "JUEGOS"];
   word: string
   guesses: number = 6;
   guessedLetters: string[] = [];
   buttons: NodeListOf<HTMLButtonElement>;
   guessers: NodeListOf<HTMLDivElement>
+
+  puntuacion: number = 0;
+  endOfGame:boolean = false;
+  gameService = inject(GamesService);
+  rooter = inject(Router);
   
   @ViewChild('keyboard') keyboard: ElementRef | undefined;
   @ViewChild('wordGuesser') wordGuesser: ElementRef | undefined;
@@ -39,6 +46,9 @@ export class HangedmanComponent implements AfterViewInit  {
     } else {
       console.error("keyboard not found in the DOM");
     }
+
+    this.gameService.getPointsByGame("hangedman")
+
   }
 
   handleClick(event: MouseEvent) {
@@ -84,11 +94,17 @@ export class HangedmanComponent implements AfterViewInit  {
     if(this.guesses == 0)
     {
       console.log("You Lose")
+      this.endOfGame=true;
       this.disableButtons();
     }
     else if(this.guessers[0].textContent == this.word)
     {
       console.log("You Win");
+      if(this.gameService.userPoints.hangedman < this.guesses)
+        {
+          this.gameService.setGameInfo("hangedman",this.guesses);
+        }
+        this.endOfGame = true;
       this.disableButtons();
     }
   }
@@ -98,12 +114,15 @@ export class HangedmanComponent implements AfterViewInit  {
     this.buttons.forEach(button  => button.disabled = true)
   }
 
-
-
-
-
   getRandomWord(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  RootPath(path:string)
+  {
+    this.rooter.navigate([path]);
+    this.puntuacion = 0;
+    this.endOfGame = false;
   }
 
 }

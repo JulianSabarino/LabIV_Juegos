@@ -1,31 +1,63 @@
-<div class="container d-flex justify-content-center align-items-center full-height">
-    <div class="row featurette">
-        <div class="col-md-7 order-md-2 game-div">
-          <h2 class="featurette-heading fw-normal lh-1">Preguntados <span class="text-body-secondary">Un exito inesperado</span></h2>
-          <p class="lead">Fue lanzado en 2013 y llegó a encabezar la lista de los más descargados en 125 países. El juego,
-            que logró 600 millones de descargas, fue número uno en el ranking de aplicaciones de Estados Unidos durante 66
-            días.Fue lanzado en 2013 y llegó a encabezar la lista de los más descargados en 125 países. El juego, que logró
-            600 millones de descargas, fue número uno en el ranking de aplicaciones de Estados Unidos durante 66 días.</p>
-        </div>
-        <div class="col-md-5 order-md-1">
-          
+<div class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="container d-flex justify-content-center align-items-center full-height">
 
-            <div class="d-flex justify-content-center align-items-center">
-                <img [src]="cardSelected.img" class="card-img">
+        <div class="alert-container" *ngIf="endOfGame" (click)="RootPath('home')">
+            <div class="alert alert-danger" role="alert">
+              Perdiste!
+            </div>
+          </div>
 
-                <div class="flex-column">
-                    <button class="d-flex btn-start" *ngIf="!gameStarted" (click)="startGame()">Generar una carta</button>
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2 game-div">
+                <h2 class="featurette-heading fw-normal lh-1">Preguntados <span class="text-body-secondary">Un exito
+                        inesperado</span></h2>
+                <p class="lead">Fue lanzado en 2013 y llegó a encabezar la lista de los más descargados en 125 países.
+                    El juego,
+                    que logró 600 millones de descargas, fue número uno en el ranking de aplicaciones de Estados Unidos
+                    durante 66
+                    días.Fue lanzado en 2013 y llegó a encabezar la lista de los más descargados en 125 países. El
+                    juego, que logró
+                    600 millones de descargas, fue número uno en el ranking de aplicaciones de Estados Unidos durante 66
+                    días.</p>
+            </div>
+            <div class="col-md-5 order-md-1 align-items-center justify-content-center">
 
-                    <p *ngIf="gameStarted">Cual es el nombre de esta carta?</p>
-                    <button #optbutton class="d-flex btn-option" *ngIf="(this.cardOptions.length >= 4) && gameStarted" (click)="sendResults(cardOptions[0].name)">{{ cardOptions[0].name }}</button>
-                    <button #optbutton class="d-flex btn-option" *ngIf="(this.cardOptions.length >= 4) && gameStarted" (click)="sendResults(cardOptions[1].name)">{{ cardOptions[1].name }}</button>
-                    <button #optbutton class="d-flex btn-option" *ngIf="(this.cardOptions.length >= 4) && gameStarted" (click)="sendResults(cardOptions[2].name)">{{ cardOptions[2].name }}</button>
-                    <button #optbutton class="d-flex btn-option" *ngIf="(this.cardOptions.length >= 4) && gameStarted" (click)="sendResults(cardOptions[3].name)">{{ cardOptions[3].name }}</button>
+                <div class="d-flex justify-content-center" style="margin-top: 15%;" *ngIf="!gameStarted">
+                    <button class="d-flex btn-start align-items-center" (click)="startGame(0)">Generar una
+                        carta</button>
                 </div>
 
-            </div>
-            
+                <div class="d-flex justify-content-center align-items-center">
+                    <img [src]="cardSelected.img" class="card-img" *ngIf="cardOptions[puntuacion].length == 4">
 
+                    <div class="flex-column">
+
+                        <p *ngIf="gameStarted">Cual es el nombre de esta carta?</p>
+                        <button #optbutton class="d-flex btn-option"
+                            *ngIf="(this.cardOptions[puntuacion].length >= 4) && gameStarted"
+                            (click)="sendResults(cardOptions[puntuacion][0].name)">{{ cardOptions[puntuacion][0].name
+                            }}</button>
+                        <button #optbutton class="d-flex btn-option"
+                            *ngIf="(this.cardOptions[puntuacion].length >= 4) && gameStarted"
+                            (click)="sendResults(cardOptions[puntuacion][1].name)">{{ cardOptions[puntuacion][1].name
+                            }}</button>
+                        <button #optbutton class="d-flex btn-option"
+                            *ngIf="(this.cardOptions[puntuacion].length >= 4) && gameStarted"
+                            (click)="sendResults(cardOptions[puntuacion][2].name)">{{ cardOptions[puntuacion][2].name
+                            }}</button>
+                        <button #optbutton class="d-flex btn-option"
+                            *ngIf="(this.cardOptions[puntuacion].length >= 4) && gameStarted"
+                            (click)="sendResults(cardOptions[puntuacion][3].name)">{{ cardOptions[puntuacion][3].name
+                            }}</button>
+                        <p *ngIf="gameStarted">Puntuación: {{puntuacion}}</p>
+                        <p *ngIf="gameStarted">Puntuación Maxima: {{gameService.userPoints.asked}}</p>
+                    </div>
+
+                </div>
+
+
+            </div>
         </div>
-      </div>
+    </div>
+
 </div>

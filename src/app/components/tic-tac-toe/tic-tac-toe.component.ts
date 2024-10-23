@@ -1,9 +1,12 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { GamesService } from '../../core/services/games.service';
 
 @Component({
   selector: 'app-tic-tac-toe',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './tic-tac-toe.component.html',
   styleUrl: './tic-tac-toe.component.scss'
 })
@@ -16,6 +19,12 @@ export class TicTacToeComponent implements AfterViewInit{
   board: string[];
   gameActive: boolean;
   winningCombinations: number[][];
+
+  rooter = inject(Router);
+  gameService = inject(GamesService);
+  puntuacion:number = 6;
+  endOfGame:boolean = false;
+  userWins:boolean = false;
 
   @ViewChild('gameBoard') gameBoard: ElementRef | undefined;
 
@@ -46,6 +55,8 @@ export class TicTacToeComponent implements AfterViewInit{
     } else {
       console.error("gameBoard not found in the DOM");
     }
+
+    this.gameService.getPointsByGame("tictactoe");
   }
 
   checkWinner() {
@@ -99,10 +110,12 @@ export class TicTacToeComponent implements AfterViewInit{
 
     this.board[index] = this.currentPlayer;
     cell.textContent = this.currentPlayer;
+    this.puntuacion -= 1;
 
     const winner = this.checkWinner();
     if (winner) {
         this.gameActive = false;
+        this.endOfGame = true; 
         if(winner === 'T')
           {
             console.log("Empate")
@@ -110,6 +123,14 @@ export class TicTacToeComponent implements AfterViewInit{
           else
           {
             console.log("Jugador" + winner + "gana")
+            if(winner==='X')
+            {
+              this.userWins=true;
+              if(this.gameService.userPoints.tictactoe < this.puntuacion)
+                {
+                  this.gameService.setGameInfo("tictactoe",this.puntuacion);
+                }
+            }
           }
     } else {
         this.currentPlayer = 'O';
@@ -117,6 +138,15 @@ export class TicTacToeComponent implements AfterViewInit{
         setTimeout(this.playAI.bind(this), 500); // Espera 0.5 segundos antes de que la IA haga su jugada
     }
   }
+
+
+  RootPath(path:string)
+  {
+    this.rooter.navigate([path]);
+    this.puntuacion = 0;
+    this.endOfGame = false;
+  }
+
   
 }
 
