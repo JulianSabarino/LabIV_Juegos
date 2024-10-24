@@ -1,0 +1,18 @@
+.card
+{
+    width: 250px;
+    height: 250px;
+    overflow-y: scroll;
+}
+
+
+.card::-webkit-scrollbar
+{
+    display: none;
+}
+
+
+.li-points
+{
+    font-weight: 700;
+}

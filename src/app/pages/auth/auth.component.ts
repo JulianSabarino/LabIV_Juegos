@@ -17,7 +17,7 @@ export class AuthComponent {
   rooter = inject(Router);
   authService  = inject(AuthService);
   form = new FormGroup({
-    email: new FormControl(),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('',[Validators.required,Validators.minLength(5)])
   })
 
@@ -40,10 +40,12 @@ export class AuthComponent {
     
   }
 
-  FillForm()
+  FillForm(email: string, pass: string)
   {
-    this.form.value.email="julian3331arg@gmail.com";
-    this.form.value.password="654321";
+    this.form.patchValue({
+      email: email,
+      password: pass
+    });
   }
 
 }

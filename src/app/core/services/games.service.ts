@@ -11,6 +11,9 @@ export class GamesService {
   authService = inject(AuthService);
   userPoints: any ={};
   minMaxList: any[] = [{}];
+  askedList: any[] = [{}];
+  hangedmanList: any[] = [{}];
+  tictactoeList: any[] = [{}];
 
   constructor() { }
 
@@ -66,7 +69,51 @@ export class GamesService {
   );
     console.log(this.minMaxList);
     return this.minMaxList;
+  }
+  async getAllAsked()
+  {
+    let path = `asked`;
+    //return (await getDocs(collection(getFirestore(),path)));
 
+    let data = await getDocs(collection(getFirestore(),path));
+
+    this.askedList = data.docs.map(doc => ({
+      points: doc.data()['points'] as number,
+      email: doc.data()['email'] as string
+    })  
+  );
+    console.log(this.askedList);
+    return this.askedList;
+  }
+  async getAllHangedMan()
+  {
+    let path = `hangedman`;
+    //return (await getDocs(collection(getFirestore(),path)));
+
+    let data = await getDocs(collection(getFirestore(),path));
+
+    this.hangedmanList = data.docs.map(doc => ({
+      points: doc.data()['points'] as number,
+      email: doc.data()['email'] as string
+    })  
+  );
+    console.log(this.hangedmanList);
+    return this.hangedmanList;
+  }
+  async getAllTicTacToe()
+  {
+    let path = `tictactoe`;
+    //return (await getDocs(collection(getFirestore(),path)));
+
+    let data = await getDocs(collection(getFirestore(),path));
+
+    this.tictactoeList = data.docs.map(doc => ({
+      points: doc.data()['points'] as number,
+      email: doc.data()['email'] as string
+    })  
+  );
+    console.log(this.tictactoeList);
+    return this.tictactoeList;
   }
 
 
