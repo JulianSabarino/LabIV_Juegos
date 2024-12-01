@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { GamesService } from '../../core/services/games.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -22,6 +23,7 @@ export class TicTacToeComponent implements AfterViewInit{
 
   rooter = inject(Router);
   gameService = inject(GamesService);
+  toastr = inject(ToastrService)
   puntuacion:number = 6;
   endOfGame:boolean = false;
   userWins:boolean = false;
@@ -123,6 +125,7 @@ export class TicTacToeComponent implements AfterViewInit{
           else
           {
             console.log("Jugador" + winner + "gana")
+            this.toastr.info("Fin de la partida");
             if(winner==='X')
             {
               this.userWins=true;

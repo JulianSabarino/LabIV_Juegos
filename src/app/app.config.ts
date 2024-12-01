@@ -7,8 +7,15 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
+import { provideToastr } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations'
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';//Loading spinner
+
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(),
+    provideAnimationsAsync(), //loading spinner and toastr
+    provideToastr({timeOut:4000,preventDuplicates:true}),
     provideHttpClient(withFetch()),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),

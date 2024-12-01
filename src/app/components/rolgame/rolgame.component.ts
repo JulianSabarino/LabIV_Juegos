@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { user } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { GamesService } from '../../core/services/games.service';
 
 @Component({
   selector: 'app-rolgame',
@@ -10,6 +13,9 @@ import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 })
 export class RolgameComponent implements OnInit{
   
+  rooter = inject(Router);
+  gameService = inject(GamesService)
+
   boarStatus: any =
   {
     action: "",
@@ -26,6 +32,9 @@ export class RolgameComponent implements OnInit{
     isWin:false,
     isDead:false
   }
+
+  endOfGame = false;
+  userWins = false;
 
 
   ngOnInit(): void {
@@ -46,7 +55,7 @@ export class RolgameComponent implements OnInit{
     }
   }
 
-  advanceGame(action: string)
+  async advanceGame(action: string)
   {
     
     if (action === 'attack') {
@@ -77,6 +86,8 @@ export class RolgameComponent implements OnInit{
         else
         {
           this.gameStatus.isDead = true;
+          this.endOfGame = true
+          await this.gameService.setGameInfo("rolboar", 3-this.boarStatus.health);
           console.log("LOSE");
         }
         break;
@@ -104,6 +115,8 @@ export class RolgameComponent implements OnInit{
             else
             {
               this.gameStatus.isDead = true;
+              this.endOfGame = true
+              await this.gameService.setGameInfo("rolboar", 3-this.boarStatus.health);
               console.log("YOU LOSE");
             } 
         }
@@ -128,7 +141,10 @@ export class RolgameComponent implements OnInit{
 
     if(this.boarStatus.health == 0)
     {
+      this.endOfGame= true;
+      this.userWins = true;
       console.log("YOU WIN");
+      await this.gameService.setGameInfo("rolboar", 3-this.boarStatus.health);
       setTimeout(() => {
         this.gameStatus.isWin = true;
         this.cdRef.detectChanges(); 
@@ -136,6 +152,14 @@ export class RolgameComponent implements OnInit{
     }
 
     console.log(this.boarStatus.position);
+  }
+
+
+  RootPath(path:string)
+  {
+    this.rooter.navigate([path]);
+    this.boarStatus.health = 3;
+    this.endOfGame = false;
   }
 
 }

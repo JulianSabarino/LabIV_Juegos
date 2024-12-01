@@ -4,11 +4,13 @@ import { AfterViewInit, Component, ElementRef, inject, OnInit, QueryList, ViewCh
 import { catchError, map, of } from 'rxjs';
 import { GamesService } from '../../core/services/games.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-askmagic',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,NgxSpinnerModule],
   templateUrl: './askmagic.component.html',
   styleUrl: './askmagic.component.scss'
 })
@@ -16,6 +18,8 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
 
   optbuttons!: NodeListOf<HTMLButtonElement>;
   httpService  = inject(HttpClient);
+  spinner = inject(NgxSpinnerService);
+  toastr = inject(ToastrService);
   cardSelected: any =
   {
     name:"",
@@ -29,11 +33,14 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
   endOfGame:boolean = false;
   rooter = inject(Router)
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.spinner.show();
 
-    this.getFourRandomCards(0);
-    this.getFourRandomCards(1);
-    this.gameService.getPointsByGame("asked");
+    await this.getFourRandomCards(0);
+    await this.getFourRandomCards(1);
+    await this.gameService.getPointsByGame("asked");
+
+    this.spinner.hide();
 
   }
 
@@ -49,6 +56,7 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
 
   async getFourRandomCards(round:number)
   {
+
     this.cardOptions[round] = [];
     for(let i=0;i <=3; i++)
       {
@@ -56,6 +64,7 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
       }
   
       console.log(this.cardOptions);
+
   }
 
   getCard(round: number) { 
@@ -114,6 +123,7 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
 
   async sendResults(name:string)
   {
+    this.spinner.show()
     this.optbuttons.forEach(optbutton => {
       optbutton.disabled=true;  
     });
@@ -122,18 +132,21 @@ export class AskmagicComponent implements OnInit, AfterViewInit{
     {
       console.log("Ganaste");
       this.puntuacion+=1;
-      this.getFourRandomCards(this.puntuacion+1);
+      await this.getFourRandomCards(this.puntuacion+1);
       this.startGame(this.puntuacion);
+      this.toastr.success("Correcto")
     }
     else
     {
       console.log("Perdiste");
+      this.toastr.error("Fin del Juego")
       this.endOfGame=true;
       if(this.gameService.userPoints.asked < this.puntuacion)
       {
         this.gameService.setGameInfo("asked",this.puntuacion);
       }
     }
+    this.spinner.hide();
   }
 
   RootPath(path:string)
