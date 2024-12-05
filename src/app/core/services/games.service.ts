@@ -14,6 +14,7 @@ export class GamesService {
   askedList: any[] = [{}];
   hangedmanList: any[] = [{}];
   tictactoeList: any[] = [{}];
+  boarList: any[] = [{}];
 
   constructor() { }
 
@@ -100,9 +101,26 @@ export class GamesService {
     console.log(this.hangedmanList);
     return this.hangedmanList;
   }
+
+  async getAllBoar()
+  {
+    let path = `rolboar`;
+    //return (await getDocs(collection(getFirestore(),path)));
+
+    let data = await getDocs(collection(getFirestore(),path));
+
+    this.boarList = data.docs.map(doc => ({
+      points: doc.data()['points'] as number,
+      email: doc.data()['email'] as string
+    })  
+  );
+    console.log(this.boarList);
+    return this.boarList;
+  }
+
   async getAllTicTacToe()
   {
-    let path = `tictactoe`;
+    let path = `rolboar`;
     //return (await getDocs(collection(getFirestore(),path)));
 
     let data = await getDocs(collection(getFirestore(),path));

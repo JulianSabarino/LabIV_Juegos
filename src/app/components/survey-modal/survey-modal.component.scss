@@ -1,0 +1,16 @@
+/* Center the dialog */
+.centered-dialog .mat-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80vw; /* You can adjust this width if needed */
+    max-height: 80vh; /* You can adjust this height if needed */
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  /* You can adjust the modal size, if needed */
+  .mat-dialog-container {
+    width: 400px; /* Optional: You can set a fixed width for the modal */
+  }

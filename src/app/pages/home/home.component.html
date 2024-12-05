@@ -11,31 +11,33 @@
   <div class="row mb-2">
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static clickable-div" (click)="RootPath('home/tic-tac-toe')">
+        <div class="col p-4 d-flex flex-column position-static clickable-div">
           <h3 class="mb-0">Ta te Ti</h3>
           <div class="mb-1 text-body-secondary">¡Simple y divertido!</div>
           <p class="card-text mb-auto">
             Ta te Ti, también conocido como Tres en raya o Tic Tac Toe, es un juego de mesa para dos jugadores.
             El objetivo es conseguir colocar tres fichas en línea, ya sea horizontal, vertical o diagonal.
           </p>
+          <button class="btn-primary btn-lg btn" (click)="sendSurvey('tateti')">Toma la Encuesta</button>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img src="/assets/home/gameslogos/tictactoe.jpg" class="bd-placeholder-img" width="200" height="250">
+          <img src="/assets/home/gameslogos/tictactoe.jpg" class="bd-placeholder-img" width="200" height="250" (click)="RootPath('home/tic-tac-toe')">
         </div>
       </div>
 
     </div>
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static clickable-div" (click)="RootPath('home/hangedman')">
+        <div class="col p-4 d-flex flex-column position-static clickable-div">
           <h3 class="mb-0">El Ahorcado</h3>
           <div class="mb-1 text-body-secondary">Palabras por doquier</div>
           <p class="mb-auto">
             ¡Intenta adivinar la palabra antes de que te cuelguen!
           </p>
+          <button class="btn-primary btn-lg btn" (click)="sendSurvey('hangedman')">Toma la Encuesta</button>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img src="/assets/home/gameslogos/hangedman.png" class="bd-placeholder-img" width="200" height="250">
+          <img src="/assets/home/gameslogos/hangedman.png" class="bd-placeholder-img" width="200" height="250" (click)="RootPath('home/hangedman')">
         </div>
       </div>
     </div>
@@ -45,32 +47,34 @@
   <div class="row mb-2">
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static clickable-div" (click)="RootPath('home/askedmtg')">
+        <div class="col p-4 d-flex flex-column position-static clickable-div" >
           <h3 class="mb-0">Preguntados (MTG)</h3>
           <div class="mb-1 text-body-secondary">¡Pon a prueba tus conocimientos!</div>
           <p class="card-text mb-auto">
             Con Preguntados, aprender se vuelve divertido y emocionante.
             ¡Pon a prueba tus conocimientos, descubre nuevos temas y conviértete en un experto!
           </p>
+          <button class="btn-primary btn-lg btn" (click)="sendSurvey('asked')">Toma la Encuesta</button>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img src="/assets/home/gameslogos/asked.png" class="bd-placeholder-img" width="200" height="250">
+          <img src="/assets/home/gameslogos/asked.png" class="bd-placeholder-img" width="200" height="250" (click)="RootPath('home/askedmtg')">
         </div>
       </div>
 
     </div>
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static clickable-div" (click)="RootPath('home/rpg')">
+        <div class="col p-4 d-flex flex-column position-static clickable-div" >
           <h3 class="mb-0">Juegos de Rol</h3>
           <div class="mb-1 text-body-secondary">¡Comienza tu propia aventura!</div>
           <p class="mb-auto">
             Los juegos de rol son un espacio para la imaginación, la creatividad y la conexión.
             Únete a un grupo de jugadores y vive una aventura llena de acción, emoción y personajes inolvidables.
           </p>
+          <button class="btn-primary btn-lg btn" (click)="sendSurvey('boarrol')">Toma la Encuesta</button>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img src="/assets/home/gameslogos/rpg.jpg" class="bd-placeholder-img" width="200" height="250">
+          <img src="/assets/home/gameslogos/rpg.jpg" class="bd-placeholder-img" width="200" height="250" (click)="RootPath('home/rpg')">
         </div>
       </div>
     </div>
@@ -79,15 +83,16 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static clickable-div" (click)="RootPath('home/minmax')">
+        <div class="col p-4 d-flex flex-column position-static clickable-div">
           <h3 class="mb-0">¿Mayor o Menor?</h3>
           <div class="mb-1 text-body-secondary"> ¡Acierta la apuesta y vence al destino!</div>
           <p class="card-text mb-auto">
             Un juego sencillo y divertido para disfrutar con amigos y familia. ¡Adivina la carta y prueba tu suerte!
           </p>
+          <button class="btn-primary btn-lg btn" (click)="sendSurvey('minmax')">Toma la Encuesta</button>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img src="/assets/home/gameslogos/jokercard.jpg" class="bd-placeholder-img" width="200" height="250">
+          <img src="/assets/home/gameslogos/jokercard.jpg" class="bd-placeholder-img" width="200" height="250"  (click)="RootPath('home/minmax')">
         </div>
       </div>
     </div>
